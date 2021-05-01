@@ -18,7 +18,7 @@ export default function Home() {
     //setAddText(e.target.value);
   };
   const onClickAdd = () => {
-    alert(text);
+    // alert(text);
   };
   //投稿ボタンクリック
   const handleContribution = (e) => {
@@ -41,14 +41,14 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Pannel Discussion</h1>
-        <div className="no-begining-area">
+        <div className={styles.no_begining_area}>
           {/* <textarea value={noBeginingText} onChange={onChangeText}></textarea> */}
           {/* {noBeginingText.map((t) => {
             return t;
           })} */}
           {[...noBeginingText]}
         </div>
-        <div className>
+        <div className={styles.contribution_area}>
           <label for="contribute">投稿</label>
           <textarea
             id="contribute"

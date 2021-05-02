@@ -1,16 +1,17 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
+import Link from 'next/link'
 
 export default function Home() {
   //投稿テキスト
-  const [contributionText, setContributionText] = useState("");
+  const [contributionText, setContributionText] = useState();
   //話し終えた話題
-  const [finishedText, setFinishedText] = useState([""]);
+  const [finishedText, setFinishedText] = useState([]);
   //お話し中
-  const [talkingText, setTalkingText] = useState([""]);
+  const [talkingText, setTalkingText] = useState([]);
   //未着手の話題
-  const [noBeginingText, setNoBeginingText] = useState([""]);
+  const [noBeginingText, setNoBeginingText] = useState([]);
 
   //未着手の話題へいくテキスト
   const onChangeText = (e) => {
@@ -28,36 +29,42 @@ export default function Home() {
     setContributionText("");
   };
 
-  // constructor(props){
-  //   super(props);
-
-  //}
   return (
     <div className={styles.container}>
       <Head>
         <title>パネルディスカッション</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/it-kingdom.png" />
       </Head>
 
-      <main className={styles.main}>
+      <header>
         <h1 className={styles.title}>Pannel Discussion</h1>
-        <div className={styles.no_begining_area}>
-          {/* <textarea value={noBeginingText} onChange={onChangeText}></textarea> */}
-          {/* {noBeginingText.map((t) => {
-            return t;
-          })} */}
-          {[...noBeginingText]}
+        <div>
+          <Link href={"/admin.jsx"}>Admin</Link>
+        </div>
+        <div>
+          <Link href={"/admin.jsx"}>Gest</Link>
+        </div>
+      </header>
+      <main className={styles.main}>
+
+        {/* 未着手の話題 */}
+        <div className={styles.no_begining_area_component}>  
           <ul>
             {noBeginingText.map((noBegining) => {
               return (
-                <div>
-                  <li>{noBegining}</li>
-                  <button>aa</button>
+                <div className={styles.no_begining_area}>
+                  <form>
+                    <li>{noBegining}</li>
+                    <button>お話し中</button>
+                    <button>削除</button>
+                  </form>
                 </div>
               );
             })}
           </ul>
         </div>
+
+        {/* 投稿エリア */}
         <div className={styles.contribution_area}>
           <label for="contribute">投稿</label>
           <textarea

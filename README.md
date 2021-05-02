@@ -1,4 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# パネルディスカッション
+
+## 要件
+
+一般参加者と管理者が存在する
+一般参加者はログイン不要
 
 ## Getting Started
 

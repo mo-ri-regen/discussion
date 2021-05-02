@@ -1,16 +1,17 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
+import Link from 'next/link'
 
 export default function Home() {
   //投稿テキスト
-  const [contributionText, setContributionText] = useState("");
+  const [contributionText, setContributionText] = useState();
   //話し終えた話題
-  const [finishedText, setFinishedText] = useState([""]);
+  const [finishedText, setFinishedText] = useState([]);
   //お話し中
-  const [talkingText, setTalkingText] = useState([""]);
+  const [talkingText, setTalkingText] = useState([]);
   //未着手の話題
-  const [noBeginingText, setNoBeginingText] = useState([""]);
+  const [noBeginingText, setNoBeginingText] = useState([]);
 
   //未着手の話題へいくテキスト
   const onChangeText = (e) => {
@@ -39,25 +40,31 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <header>
         <h1 className={styles.title}>Pannel Discussion</h1>
-        <div className={styles.no_begining_area}>
-          {/* <textarea value={noBeginingText} onChange={onChangeText}></textarea> */}
-          {/* {noBeginingText.map((t) => {
-            return t;
-          })} */}
-          {[...noBeginingText]}
+        <div>
+          <Link href="./admin.jsx">管理者はこちら</Link>
+        </div>
+        一般画面へ
+      </header>
+      <main className={styles.main}>
+
+        {/* 未着手の話題 */}
+        <div className={styles.no_begining_area}>  
           <ul>
             {noBeginingText.map((noBegining) => {
               return (
-                <div>
+                <div className={styles.no_begining_area}>
                   <li>{noBegining}</li>
-                  <button>aa</button>
+                  <button>お話し中</button>
+                  <button>削除</button>
                 </div>
               );
             })}
           </ul>
         </div>
+
+        {/* 投稿エリア */}
         <div className={styles.contribution_area}>
           <label for="contribute">投稿</label>
           <textarea

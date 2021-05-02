@@ -6,11 +6,11 @@ export default function Home() {
   //投稿テキスト
   const [contributionText, setContributionText] = useState("");
   //話し終えた話題
-  const [finishedText, setFinishedText] = useState("");
+  const [finishedText, setFinishedText] = useState([""]);
   //お話し中
-  const [talkingText, setTalkingText] = useState("");
+  const [talkingText, setTalkingText] = useState([""]);
   //未着手の話題
-  const [noBeginingText, setNoBeginingText] = useState("");
+  const [noBeginingText, setNoBeginingText] = useState([""]);
 
   //未着手の話題へいくテキスト
   const onChangeText = (e) => {
@@ -47,6 +47,16 @@ export default function Home() {
             return t;
           })} */}
           {[...noBeginingText]}
+          <ul>
+            {noBeginingText.map((noBegining) => {
+              return (
+                <div>
+                  <li>{noBegining}</li>
+                  <button>aa</button>
+                </div>
+              );
+            })}
+          </ul>
         </div>
         <div className={styles.contribution_area}>
           <label for="contribute">投稿</label>

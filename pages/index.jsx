@@ -29,15 +29,11 @@ export default function Home() {
     setContributionText("");
   };
 
-  // constructor(props){
-  //   super(props);
-
-  //}
   return (
     <div className={styles.container}>
       <Head>
         <title>パネルディスカッション</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/it-kingdom.png" />
       </Head>
 
       <header>

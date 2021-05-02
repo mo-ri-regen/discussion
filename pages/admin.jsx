@@ -1,8 +1,11 @@
-import '../styles/globals.css'
+import '/'
 import Link from 'next/link'
 
-export function Admin({ Component, pageProps }) {
+export default function Admin({ Component, pageProps }) {
   return (
-    <div>aaa</div>
+    <div>
+      <p>aaa</p>
+    </div>
+    // return <Component {...pageProps} />
   );
 }

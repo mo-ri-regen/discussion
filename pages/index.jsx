@@ -3,6 +3,9 @@ import styles from "../styles/Home.module.css";
 import { useState } from "react";
 import Link from 'next/link'
 
+
+
+
 export default function Home() {
   //投稿テキスト
   const [contributionText, setContributionText] = useState();
@@ -13,6 +16,10 @@ export default function Home() {
   //未着手の話題
   const [noBeginingText, setNoBeginingText] = useState([]);
 
+  let noBeginingArea = {
+    backgroundColor: "#8ba2bd",
+    
+  };
   //未着手の話題へいくテキスト
   const onChangeText = (e) => {
     setContributionText(e.target.value);
@@ -20,6 +27,12 @@ export default function Home() {
   };
   const onClickAdd = () => {
     // alert(text);
+  };
+  //話し中の背景変更
+  const onChangeTalkingStyle = {
+    // const talking = styles.no_begining_area;
+    // talking.style.backgroundColor="#c3ebff"
+    // noBeginingArea.backgroundColor=
   };
   //投稿ボタンクリック
   const handleContribution = (e) => {
@@ -39,10 +52,10 @@ export default function Home() {
       <header>
         <h1 className={styles.title}>Pannel Discussion</h1>
         <div>
-          <Link href={"/admin.jsx"}>Admin</Link>
+          <Link href={"/admin"}>Admin</Link>
         </div>
         <div>
-          <Link href={"/admin.jsx"}>Gest</Link>
+          <Link href={"/"}>Gest</Link>
         </div>
       </header>
       <main className={styles.main}>
@@ -52,10 +65,11 @@ export default function Home() {
           <ul>
             {noBeginingText.map((noBegining) => {
               return (
-                <div className={styles.no_begining_area}>
+                // <div className={styles.no_begining_area}>
+                <div style={noBeginingArea}>
                   <form>
                     <li>{noBegining}</li>
-                    <button>お話し中</button>
+                    <button onClick={onChangeTalkingStyle}>お話し中</button>
                     <button>削除</button>
                   </form>
                 </div>

@@ -39,21 +39,25 @@ export default function Home() {
       <header>
         <h1 className={styles.title}>Pannel Discussion</h1>
         <div>
-          <Link href="./admin.jsx">管理者はこちら</Link>
+          <Link href={"/admin.jsx"}>Admin</Link>
         </div>
-        一般画面へ
+        <div>
+          <Link href={"/admin.jsx"}>Gest</Link>
+        </div>
       </header>
       <main className={styles.main}>
 
         {/* 未着手の話題 */}
-        <div className={styles.no_begining_area}>  
+        <div className={styles.no_begining_area_component}>  
           <ul>
             {noBeginingText.map((noBegining) => {
               return (
                 <div className={styles.no_begining_area}>
-                  <li>{noBegining}</li>
-                  <button>お話し中</button>
-                  <button>削除</button>
+                  <form>
+                    <li>{noBegining}</li>
+                    <button>お話し中</button>
+                    <button>削除</button>
+                  </form>
                 </div>
               );
             })}

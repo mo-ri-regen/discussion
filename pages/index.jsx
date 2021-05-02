@@ -6,11 +6,11 @@ export default function Home() {
   //投稿テキスト
   const [contributionText, setContributionText] = useState("");
   //話し終えた話題
-  const [finishedText, setFinishedText] = useState("");
+  const [finishedText, setFinishedText] = useState([""]);
   //お話し中
-  const [talkingText, setTalkingText] = useState("");
+  const [talkingText, setTalkingText] = useState([""]);
   //未着手の話題
-  const [noBeginingText, setNoBeginingText] = useState("");
+  const [noBeginingText, setNoBeginingText] = useState([""]);
 
   //未着手の話題へいくテキスト
   const onChangeText = (e) => {
@@ -18,7 +18,7 @@ export default function Home() {
     //setAddText(e.target.value);
   };
   const onClickAdd = () => {
-    alert(text);
+    // alert(text);
   };
   //投稿ボタンクリック
   const handleContribution = (e) => {
@@ -41,14 +41,24 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Pannel Discussion</h1>
-        <div className="no-begining-area">
+        <div className={styles.no_begining_area}>
           {/* <textarea value={noBeginingText} onChange={onChangeText}></textarea> */}
           {/* {noBeginingText.map((t) => {
             return t;
           })} */}
           {[...noBeginingText]}
+          <ul>
+            {noBeginingText.map((noBegining) => {
+              return (
+                <div>
+                  <li>{noBegining}</li>
+                  <button>aa</button>
+                </div>
+              );
+            })}
+          </ul>
         </div>
-        <div className>
+        <div className={styles.contribution_area}>
           <label for="contribute">投稿</label>
           <textarea
             id="contribute"

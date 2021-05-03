@@ -29,10 +29,18 @@ export default function Home() {
     // alert(text);
   };
   //話し中の背景変更
-  const onChangeTalkingStyle = {
+  const onChangeTalkingStyle = ()=>{
     // const talking = styles.no_begining_area;
     // talking.style.backgroundColor="#c3ebff"
     // noBeginingArea.backgroundColor=
+    alert("aa");
+  };
+  //話題の削除
+  const onClickDelete =(index)=>{
+    const text = [...noBeginingText];
+    text.splice(index, 1);
+    setNoBeginingText(text);
+    
   };
   //投稿ボタンクリック
   const handleContribution = (e) => {
@@ -63,15 +71,13 @@ export default function Home() {
         {/* 未着手の話題 */}
         <div className={styles.no_begining_area_component}>  
           <ul>
-            {noBeginingText.map((noBegining) => {
+            {noBeginingText.map((noBegining,index) => {
               return (
                 // <div className={styles.no_begining_area}>
                 <div style={noBeginingArea}>
-                  <form>
-                    <li>{noBegining}</li>
-                    <button onClick={onChangeTalkingStyle}>お話し中</button>
-                    <button>削除</button>
-                  </form>
+                  <li>{noBegining}</li>
+                  <button onClick={onChangeTalkingStyle}>お話し中</button>
+                  <button onClick={()=>onClickDelete(index)}>削除</button>
                 </div>
               );
             })}
@@ -80,9 +86,8 @@ export default function Home() {
 
         {/* 投稿エリア */}
         <div className={styles.contribution_area}>
-          <label for="contribute">投稿</label>
+          {/* <label for="contribute">投稿</label> */}
           <textarea
-            id="contribute"
             value={contributionText}
             onChange={onChangeText}
           ></textarea>
@@ -100,6 +105,7 @@ export default function Home() {
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer> */}
+
     </div>
   );
 }

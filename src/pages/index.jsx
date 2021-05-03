@@ -33,23 +33,26 @@ export default function Home() {
     // const talking = styles.no_begining_area;
     // talking.style.backgroundColor="#c3ebff"
     // noBeginingArea.backgroundColor=
-    alert("aa");
+    
   };
   //話題の削除
-  const onClickDelete =(index)=>{
+  const onClickDeleteTalking =(index)=>{
     const text = [...noBeginingText];
     text.splice(index, 1);
     setNoBeginingText(text);
     
   };
   //投稿ボタンクリック
-  const handleContribution = (e) => {
-    // setContributionText(contributionText);
+  const handleContribution = () => {
     const text = [...noBeginingText, contributionText];
     setNoBeginingText(text);
     setContributionText("");
   };
-
+  //トーク終了
+  const onChangeTalkingFinish = (changeTalkingText) =>{
+    const text = [...finishedText, changeTalkingText];
+    setFinishedText(text);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -68,23 +71,8 @@ export default function Home() {
       </header>
       <main className={styles.main}>
 
-        {/* 未着手の話題 */}
-        <div className={styles.no_begining_area_component}>  
-          <ul>
-            {noBeginingText.map((noBegining,index) => {
-              return (
-                // <div className={styles.no_begining_area}>
-                <div style={noBeginingArea}>
-                  <li>{noBegining}</li>
-                  <button onClick={onChangeTalkingStyle}>お話し中</button>
-                  <button onClick={()=>onClickDelete(index)}>削除</button>
-                </div>
-              );
-            })}
-          </ul>
-        </div>
-
         {/* 投稿エリア */}
+        <h2>お題がある人はテキストに入力してね</h2>
         <div className={styles.contribution_area}>
           {/* <label for="contribute">投稿</label> */}
           <textarea
@@ -93,6 +81,46 @@ export default function Home() {
           ></textarea>
           <button onClick={handleContribution}>投稿</button>
         </div>
+
+        {/* 未着手の話題 */}
+        <div className={styles.no_begining_area_component}>
+          <h2>話していない話題(チェックはお話し中の話題)</h2>
+          <ul>
+            {noBeginingText.map((noBegining,index) => {
+              return (
+                // <div className={styles.no_begining_area}>
+                <div style={noBeginingArea}>
+                  <li>
+                    <label><input type="checkbox" value="{noBegining}"></input>
+                    {noBegining}
+                    </label>
+                  </li>
+                  <button onClick={()=>onChangeTalkingFinish(noBegining)}>トーク終了</button>
+                  <button onClick={()=>onClickDeleteTalking(index)}>削除</button>
+                </div>
+              );
+            })}
+          </ul>
+        </div>
+
+        {/* 話し終えた話題 */}
+        <h2>話し終えた話題</h2>
+        <div className={styles.no_begining_area_component}>  
+          <ul>
+            {finishedText.map((finishing,index) => {
+              return (
+                // <div className={styles.no_begining_area}>
+                <div style={noBeginingArea}>
+                  <li>{finishing}</li>
+                  {/* <button onClick={()=>onChangeTalkingFinish(noBegining)}>トーク終了</button> */}
+                  <button onClick={()=>onClickDelete(index)}>削除</button>
+                </div>
+              );
+            })}
+          </ul>
+        </div>
+
+
       </main>
 
       {/* <footer className={styles.footer}>

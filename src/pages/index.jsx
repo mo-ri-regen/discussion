@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import { useState } from "react";
 import Link from 'next/link'
 
-
+import Header from '../components/header'
 
 
 export default function Home() {
@@ -53,6 +53,7 @@ export default function Home() {
     const text = [...finishedText, changeTalkingText];
     setFinishedText(text);
   };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -60,17 +61,9 @@ export default function Home() {
         <link rel="icon" href="/it-kingdom.png" />
       </Head>
 
-      <header>
-        <h1 className={styles.title}>Pannel Discussion</h1>
-        <div>
-          <Link href={"/admin"}>Admin</Link>
-        </div>
-        <div>
-          <Link href={"/"}>Gest</Link>
-        </div>
-      </header>
+      <Header />
+      
       <main className={styles.main}>
-
         {/* 投稿エリア */}
         <h2>お題がある人はテキストに入力してね</h2>
         <div className={styles.contribution_area}>
@@ -119,7 +112,6 @@ export default function Home() {
             })}
           </ul>
         </div>
-
 
       </main>
 

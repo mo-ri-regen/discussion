@@ -1,7 +1,7 @@
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
-export default function Head(){
+export function Header(){
   return (
     <header>   
       <h1 className={styles.title}>Pannel Discussion</h1>

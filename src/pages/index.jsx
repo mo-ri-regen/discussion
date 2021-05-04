@@ -48,9 +48,18 @@ export default function Home() {
     setNoBeginingText(text);
     setContributionText("");
   };
-  //トーク終了
-  const onChangeTalkingFinish = (changeTalkingText) =>{
+  //トーク終了ボタン押下
+  const onChangeTalkingFinish = (changeTalkingText, index) =>{
+    const textList=[...noBeginingText];
     const text = [...finishedText, changeTalkingText];
+    setFinishedText(text);
+    textList.splice(index, 1);
+    setNoBeginingText(textList);
+  };
+//話し終えた話題の削除
+  const onClickDeleteFinishTalking =(index)=>{
+    const text = [...finishedText];
+    text.splice(index, 1);
     setFinishedText(text);
   };
 
@@ -88,7 +97,7 @@ export default function Home() {
                     {noBegining}
                     </label>
                   </li>
-                  <button onClick={()=>onChangeTalkingFinish(noBegining)}>トーク終了</button>
+                  <button onClick={()=>onChangeTalkingFinish(noBegining, index)}>トーク終了</button>
                   <button onClick={()=>onClickDeleteTalking(index)}>削除</button>
                 </div>
               );
@@ -106,7 +115,7 @@ export default function Home() {
                 <div style={noBeginingArea}>
                   <li>{finishing}</li>
                   {/* <button onClick={()=>onChangeTalkingFinish(noBegining)}>トーク終了</button> */}
-                  <button onClick={()=>onClickDelete(index)}>削除</button>
+                  <button onClick={()=>onClickDeleteFinishTalking(index)}>削除</button>
                 </div>
               );
             })}

@@ -90,7 +90,6 @@ export default function Home() {
                     </label>
                   </li>
                   <button onClick={()=>onChangeTalkingFinish(noBegining, index)}>トーク終了</button>
-                  <button onClick={()=>onClickDeleteTalking(index)}>削除</button>
                 </div>
               );
             })}
@@ -107,7 +106,6 @@ export default function Home() {
                 <div style={noBeginingArea}>
                   <li>{finishing}</li>
                   {/* <button onClick={()=>onChangeTalkingFinish(noBegining)}>トーク終了</button> */}
-                  <button onClick={()=>onClickDeleteFinishTalking(index)}>削除</button>
                 </div>
               );
             })}

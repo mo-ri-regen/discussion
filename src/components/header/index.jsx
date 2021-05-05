@@ -9,10 +9,10 @@ export function Header(){
       <nav className={classes.navi}>
         <ul className={classes.inner}>
           <li>
-            <Link href={"/admin"}>Admin</Link>
+            <Link href={"/"}>Guest</Link>
           </li>
           <li>
-            <Link href={"/"}>Gest</Link>
+            <Link href={"/admin"}>Admin</Link>
           </li>
         </ul>
       </nav>

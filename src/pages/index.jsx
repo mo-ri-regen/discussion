@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from 'next/link'
 
 import { Header } from '../components/header'
-
+import { Contribution} from '../components/contribution'
 
 export default function Home() {
   //投稿テキスト
@@ -75,15 +75,8 @@ export default function Home() {
       <main className={styles.main}>
         {/* 投稿エリア */}
         <h2>お題がある人はテキストに入力してね</h2>
-        <div className={styles.contribution_area}>
-          {/* <label for="contribute">投稿</label> */}
-          <textarea
-            value={contributionText}
-            onChange={onChangeText}
-          ></textarea>
-          <button onClick={handleContribution}>投稿</button>
-        </div>
-
+        <Contribution contributionText={contributionText} onChangeText={onChangeText} handleContribution={handleContribution}/>
+      
         {/* 未着手のお題 */}
         <div className={styles.no_begining_area_component}>
           <h2>話していないお題(チェックはお話し中のお題)</h2>

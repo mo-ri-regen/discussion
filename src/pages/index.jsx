@@ -74,7 +74,6 @@ export default function Home() {
       
       <main className={styles.main}>
         {/* 投稿エリア */}
-        <h2>お題がある人はテキストに入力してね</h2>
         <Contribution contributionText={contributionText} onChangeText={onChangeText} handleContribution={handleContribution}/>
       
         {/* 未着手のお題 */}

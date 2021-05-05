@@ -4,23 +4,23 @@ import { useState } from "react";
 import Link from 'next/link'
 
 import { Header } from '../components/header'
-
+import { Contribution} from '../components/contribution'
 
 export default function Home() {
   //投稿テキスト
   const [contributionText, setContributionText] = useState();
-  //話し終えた話題
+  //話し終えたお題
   const [finishedText, setFinishedText] = useState([]);
   //お話し中
   const [talkingText, setTalkingText] = useState([]);
-  //未着手の話題
+  //未着手のお題
   const [noBeginingText, setNoBeginingText] = useState([]);
 
   let noBeginingArea = {
     backgroundColor: "#8ba2bd",
     
   };
-  //未着手の話題へいくテキスト
+  //未着手のお題へいくテキスト
   const onChangeText = (e) => {
     setContributionText(e.target.value);
     //setAddText(e.target.value);
@@ -35,7 +35,7 @@ export default function Home() {
     // noBeginingArea.backgroundColor=
     
   };
-  //話題の削除
+  //お題の削除
   const onClickDeleteTalking =(index)=>{
     const text = [...noBeginingText];
     text.splice(index, 1);
@@ -56,7 +56,7 @@ export default function Home() {
     textList.splice(index, 1);
     setNoBeginingText(textList);
   };
-//話し終えた話題の削除
+//話し終えたお題の削除
   const onClickDeleteFinishTalking =(index)=>{
     const text = [...finishedText];
     text.splice(index, 1);
@@ -74,19 +74,11 @@ export default function Home() {
       
       <main className={styles.main}>
         {/* 投稿エリア */}
-        <h2>お題がある人はテキストに入力してね</h2>
-        <div className={styles.contribution_area}>
-          {/* <label for="contribute">投稿</label> */}
-          <textarea
-            value={contributionText}
-            onChange={onChangeText}
-          ></textarea>
-          <button onClick={handleContribution}>投稿</button>
-        </div>
-
-        {/* 未着手の話題 */}
+        <Contribution contributionText={contributionText} onChangeText={onChangeText} handleContribution={handleContribution}/>
+      
+        {/* 未着手のお題 */}
         <div className={styles.no_begining_area_component}>
-          <h2>話していない話題(チェックはお話し中の話題)</h2>
+          <h2>話していないお題(チェックはお話し中のお題)</h2>
           <ul>
             {noBeginingText.map((noBegining,index) => {
               return (
@@ -105,8 +97,8 @@ export default function Home() {
           </ul>
         </div>
 
-        {/* 話し終えた話題 */}
-        <h2>話し終えた話題</h2>
+        {/* 話し終えたお題 */}
+        <h2>話し終えたお題</h2>
         <div className={styles.no_begining_area_component}>  
           <ul>
             {finishedText.map((finishing,index) => {

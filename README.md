@@ -11,30 +11,13 @@
 - お題にはチェックマークをつけられる（話し終えたお題・話し中のお題・まだのお題を確認できる）
 - アドミンはログインしてお題を削除することができる（被りお題などを削除したいため）
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
 ## Tech Stack
 
 **Client:** React, Nextjs
 
 **Server:** inCompletion
 
-## Authors
+## Author
 
 - [@mo_ri_regen](https://twitter.com/mo_ri_regen)
+  何かあれば Twitter まで連絡お願いします。

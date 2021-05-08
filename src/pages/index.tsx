@@ -105,7 +105,7 @@ export default function Home() {
             </div>
           </div>
         </div> */}
-
+       
         <div className={styles.mdOverlay}></div>
         {/* 投稿エリア */}
         <Contribution contributionText={contributionText} onChangeText={onChangeText} handleContribution={handleContribution}/>

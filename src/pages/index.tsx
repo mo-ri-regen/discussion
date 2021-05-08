@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from 'next/link'
 
 import { Header } from '../components/header'
@@ -8,22 +8,23 @@ import { Contribution} from '../components/contribution'
 
 export default function Home() {
   //投稿テキスト
-  const [contributionText, setContributionText] = useState();
+  const [contributionText, setContributionText] = useState<string>('');
   //話し終えたお題
-  const [finishedText, setFinishedText] = useState([]);
+  const [finishedText, setFinishedText] = useState<string[]>([]);
   //お話し中
-  const [talkingText, setTalkingText] = useState([]);
+  const [talkingText, setTalkingText] = useState<string[]>([]);
   //未着手のお題
-  const [noBeginingText, setNoBeginingText] = useState([]);
+  const [noBeginingText, setNoBeginingText] = useState<string[]>([]);
 
   let noBeginingArea = {
     backgroundColor: "#8ba2bd",
     
   };
   //未着手のお題へいくテキスト
-  const onChangeText = (e) => {
+  const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setContributionText(e.target.value);
     //setAddText(e.target.value);
+    localStorage.setItem('text',contributionText);
   };
   const onClickAdd = () => {
     // alert(text);
@@ -36,31 +37,46 @@ export default function Home() {
     
   };
   //お題の削除
-  const onClickDeleteTalking =(index)=>{
-    const text = [...noBeginingText];
+  const onClickDeleteTalking =(index:number)=>{
+    const text :string[]= [...noBeginingText];
     text.splice(index, 1);
     setNoBeginingText(text);
     
   };
   //投稿ボタンクリック
   const handleContribution = () => {
-    const text = [...noBeginingText, contributionText];
+    const text :string[]= [...noBeginingText, contributionText];
     setNoBeginingText(text);
     setContributionText("");
   };
   //トーク終了ボタン押下
-  const onChangeTalkingFinish = (changeTalkingText, index) =>{
-    const textList=[...noBeginingText];
-    const text = [...finishedText, changeTalkingText];
+  const onChangeTalkingFinish = (changeTalkingText:string, index:number) =>{
+    const textList :string[]=[...noBeginingText];
+    const text :string[] = [...finishedText, changeTalkingText];
     setFinishedText(text);
     textList.splice(index, 1);
     setNoBeginingText(textList);
   };
 //話し終えたお題の削除
-  const onClickDeleteFinishTalking =(index)=>{
-    const text = [...finishedText];
+  const onClickDeleteFinishTalking =(index:number)=>{
+    const text:string[] = [...finishedText];
     text.splice(index, 1);
     setFinishedText(text);
+  };
+
+  // //WebStorageに投稿内容保存
+  // try{
+  //   //利用可否チェック
+  //   localStorage.setItem('_test', 0);
+  //   localStorage.removeItem('_test');
+  // }
+  // catch(e){
+  //   alert(e);
+  // }
+
+  //投稿内容のロード
+  const loadText = () =>{
+
   };
 
   return (
@@ -75,7 +91,7 @@ export default function Home() {
       <main className={styles.main}>
         {/* モーダルウィンドウ */}
         {/* 参考(MIT)https://github.com/codrops/ModalWindowEffects */}
-        {/* <div className={styles.mdModal,styles.mdEffect1} id="modal-1">
+        {/* <div className={styles.mdModal styles.mdEffect1} id="modal-1">
           <div className={styles.mdContent}>
             <h3>Modal Dialog</h3>
             <div>

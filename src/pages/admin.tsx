@@ -1,7 +1,7 @@
 import '/'
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from 'next/link'
 import { Header } from '../components/header'
 import { Contribution} from '../components/contribution'
@@ -9,20 +9,20 @@ import { Contribution} from '../components/contribution'
 export default function Admin() {
 
     //投稿テキスト
-  const [contributionText, setContributionText] = useState();
+  const [contributionText, setContributionText] = useState<string>();
   //話し終えたお題
-  const [finishedText, setFinishedText] = useState([]);
+  const [finishedText, setFinishedText] = useState<string[]>([]);
   //お話し中
-  const [talkingText, setTalkingText] = useState([]);
+  const [talkingText, setTalkingText] = useState<string[]>([]);
   //未着手のお題
-  const [noBeginingText, setNoBeginingText] = useState([]);
+  const [noBeginingText, setNoBeginingText] = useState<string[]>([]);
 
   let noBeginingArea = {
     backgroundColor: "#8ba2bd",
     
   };
   //未着手のお題へいくテキスト
-  const onChangeText = (e) => {
+  const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setContributionText(e.target.value);
     //setAddText(e.target.value);
   };
@@ -37,20 +37,20 @@ export default function Admin() {
     
   };
   //お題の削除
-  const onClickDeleteTalking =(index)=>{
-    const text = [...noBeginingText];
+  const onClickDeleteTalking =(index:number)=>{
+    const text :string[] = [...noBeginingText];
     text.splice(index, 1);
     setNoBeginingText(text);
     
   };
   //投稿ボタンクリック
   const handleContribution = () => {
-    const text = [...noBeginingText, contributionText];
+    const text :string[] = [...noBeginingText, contributionText];
     setNoBeginingText(text);
     setContributionText("");
   };
   //トーク終了ボタン押下
-  const onChangeTalkingFinish = (changeTalkingText, index) =>{
+  const onChangeTalkingFinish = (changeTalkingText:string, index:number) =>{
     const textList=[...noBeginingText];
     const text = [...finishedText, changeTalkingText];
     setFinishedText(text);
@@ -58,7 +58,7 @@ export default function Admin() {
     setNoBeginingText(textList);
   };
 //話し終えたお題の削除
-  const onClickDeleteFinishTalking =(index)=>{
+  const onClickDeleteFinishTalking =(index:number)=>{
     const text = [...finishedText];
     text.splice(index, 1);
     setFinishedText(text);

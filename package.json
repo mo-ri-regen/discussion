@@ -11,6 +11,7 @@
     "@headlessui/react": "^1.1.1-084a249",
     "@heroicons/react": "^1.0.1",
     "@supabase/supabase-js": "^1.11.13",
+    "firebase": "^8.6.1",
     "next": "10.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",

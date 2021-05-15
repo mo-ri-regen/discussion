@@ -1,10 +1,9 @@
 import firebase from "firebase/app";
 
-// Add the Firebase services that you want to use
-import "firebase/auth";
-import "firebase/firestore";
+import "firebase/auth";  // 認証
+import "firebase/firestore";  // DB
 
-const firebaseApp = firebase.initializeApp({
+const firebaseApp:firebase.app.App = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
   authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
   databaseURL: process.env.REACT_APP_FIREBASE_DATABASE,
@@ -14,5 +13,5 @@ const firebaseApp = firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 });
 
-export const db = firebaseApp.firestore();
-export const auth = firebase.auth();
+export const db:firebase.firestore.Firestore = firebaseApp.firestore();
+export const auth:firebase.auth.Auth = firebase.auth();

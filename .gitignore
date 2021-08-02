@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# 環境設定ファイル
+.env
